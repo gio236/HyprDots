@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "i will install various packages for the envirronment"
 
 # audio things
@@ -8,8 +10,15 @@ systemctl --user enable --now pipewire wireplumber pipewire-pulse
 sudo pacman -S hyprland fuzzel alacritty firefox
 
 # yay
-cd
-sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si
+if command -v yay >/dev/null 2>&1; then
+  echo "no need to install yay"
+  exit 0
+fi
+tmpdir=$(mktemp -d)
+sudo pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay-bin.git "$tmpdir/yay-bin"
+cd "$tmpdir/yay-bin" || exit 1
+makepkg -si
 
 # font
 sudo pacman -S ttf-jetbrains-mono
