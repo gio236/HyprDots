@@ -1,0 +1,275 @@
+/* ══════════════════════════════════════════════════════════
+   WAYBAR — Catppuccin Frappé
+   GTK3 compatible — @define-color via color.css
+   ══════════════════════════════════════════════════════════ */
+
+@import "color.css";
+
+/* ─── MAPPING SEMANTICO ────────────────────────────────────
+   color26 #232634  crust      → bg bar
+   color25 #292c3c  mantle     → bg surface
+   color24 #303446  base       → bg hover
+   color23 #414559  surface0   → border
+   color22 #51576d  surface1   → border accent
+   color15 #c6d0f5  text       → testo primario
+   color18 #949cbb  overlay2   → testo muted
+   color20 #737994  overlay0   → testo dim
+   color13 #8caaee  blue       → accent principale
+   color10 #81c8be  teal       → volume / batteria
+   color4  #ca9ee6  mauve      → plugged
+   color8  #e5c890  yellow     → warning
+   color5  #e78284  red        → critical
+   color14 #babbf1  lavender   → clock hover
+   ══════════════════════════════════════════════════════════ */
+
+/* ─── BAR ROOT ─────────────────────────────────────────── */
+window#waybar {
+  background-color: alpha(@color26, 0.92);
+  border-bottom: 1px solid alpha(@color23, 0.60);
+  color: @color15;
+  font-family: "JetBrains Mono", "Noto Sans Mono", monospace;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+  padding: 0 6px;
+}
+
+/* ─── TUTTI I MODULI ───────────────────────────────────── */
+#workspaces,
+#window,
+#clock,
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#temperature,
+#battery,
+#tray,
+#custom-power {
+  padding: 2px 8px;
+  margin: 0;
+  border-radius: 0;
+  background-color: transparent;
+  color: @color18;
+  border: none;
+}
+
+/* ─── WORKSPACES ───────────────────────────────────────── */
+#workspaces {
+  padding: 0 2px;
+}
+
+#workspaces button {
+  padding: 0 7px;
+  min-width: 0;
+  min-height: 10px;
+  border-radius: 0;
+  color: @color20;
+  background-color: transparent;
+  background-image: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  box-shadow: none;
+  font-size: 12px;
+  transition: color 0.12s ease;
+}
+
+box#workspaces button:hover {
+  color: @color18;
+  background-color: transparent;
+  background-image: none;
+  border-radius: 0;
+  border-bottom: 2px solid transparent;
+  box-shadow: none;
+}
+
+box#workspaces button.active,
+box#workspaces button.focused {
+  color: @color15;
+  background-color: transparent;
+  background-image: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid @color13;
+  border-radius: 0;
+  box-shadow: none;
+  font-weight: 500;
+}
+
+box#workspaces button.active:hover,
+box#workspaces button.focused:hover {
+  color: @color15;
+  background-color: transparent;
+  background-image: none;
+  border-bottom: 2px solid @color13;
+  box-shadow: none;
+}
+
+box#workspaces button.urgent {
+  color: @color5;
+  background-color: transparent;
+  background-image: none;
+  border-bottom: 2px solid @color5;
+  box-shadow: none;
+}
+
+/* ─── WINDOW TITLE ─────────────────────────────────────── */
+#window {
+  color: @color20;
+  font-size: 10px;
+  font-weight: 300;
+  padding-left: 8px;
+}
+
+/* ─── CLOCK ────────────────────────────────────────────── */
+#clock {
+  color: @color15;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  padding: 2px 12px;
+}
+
+#clock:hover {
+  color: @color14;
+}
+
+/* ─── AUDIO ────────────────────────────────────────────── */
+#pulseaudio {
+  color: @color10;
+  padding-right: 10px;
+  margin-right: 2px;
+}
+
+#pulseaudio:hover {
+  color: @color11;
+  background-color: transparent;
+}
+
+#pulseaudio.muted {
+  color: @color20;
+}
+
+/* ─── RETE ─────────────────────────────────────────────── */
+#network {
+  color: @color13;
+}
+
+#network:hover {
+  color: @color14;
+  background-color: transparent;
+}
+
+#network.disconnected {
+  color: @color20;
+}
+
+/* ─── CPU ──────────────────────────────────────────────── */
+#cpu {
+  color: @color18;
+}
+
+#cpu:hover {
+  color: @color15;
+  background-color: transparent;
+}
+
+#cpu.warning  { color: @color8; }
+#cpu.critical { color: @color5; animation: blink 0.8s step-end infinite; }
+
+/* ─── MEMORIA ──────────────────────────────────────────── */
+#memory {
+  color: @color18;
+}
+
+#memory:hover {
+  color: @color15;
+  background-color: transparent;
+}
+
+#memory.warning  { color: @color8; }
+#memory.critical { color: @color5; }
+
+/* ─── TEMPERATURA ──────────────────────────────────────── */
+#temperature {
+  color: @color18;
+}
+
+#temperature:hover {
+  color: @color15;
+  background-color: transparent;
+}
+
+#temperature.critical {
+  color: @color5;
+  animation: blink 0.6s step-end infinite;
+}
+
+/* ─── BATTERIA ─────────────────────────────────────────── */
+#battery {
+  color: @color10;
+  margin-right: 2px;
+}
+
+#battery:hover {
+  color: @color9;
+  background-color: transparent;
+}
+
+#battery.charging { color: @color9; }
+#battery.plugged  { color: @color4; }
+
+#battery.warning:not(.charging)  { color: @color8; }
+#battery.critical:not(.charging) {
+  color: @color5;
+  animation: blink 1s step-end infinite;
+}
+
+/* ─── TRAY ─────────────────────────────────────────────── */
+#tray {
+  padding: 2px 6px;
+  border-left: 1px solid alpha(@color23, 0.50);
+  margin-left: 2px;
+}
+
+#tray > .passive       { -gtk-icon-effect: dim; }
+#tray > .needs-attention { -gtk-icon-effect: highlight; }
+
+/* ─── POWER ────────────────────────────────────────────── */
+#custom-power {
+  color: @color20;
+  font-size: 13px;
+  padding: 2px 10px;
+  margin-left: 2px;
+}
+
+#custom-power:hover {
+  color: @color5;
+  background-color: transparent;
+}
+
+/* ─── TOOLTIP ──────────────────────────────────────────── */
+tooltip {
+  background-color: @color25;
+  border: 1px solid alpha(@color23, 0.80);
+  border-radius: 0;
+}
+
+tooltip label {
+  color: @color15;
+  font-family: "JetBrains Mono", "Noto Sans Mono", monospace;
+  font-size: 11px;
+  padding: 5px 9px;
+}
+
+/* ─── ANIMAZIONI ───────────────────────────────────────── */
+@keyframes blink {
+  0%   { opacity: 1;    }
+  50%  { opacity: 0.30; }
+  100% { opacity: 1;    }
+}
