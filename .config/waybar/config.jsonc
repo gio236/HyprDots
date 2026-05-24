@@ -1,0 +1,160 @@
+{
+  // ╔═══════════════════════════════════════════════╗
+  // ║           WAYBAR — FLOATING TOP BAR           ║
+  // ║   centered · padded · attached to top edge   ║
+  // ╚═══════════════════════════════════════════════╝
+
+  "layer": "top",
+  "position": "top",
+  "height": 29,
+
+  // Margini: 0 in alto (attaccata al bordo), spazio laterale
+  "margin-top": 0,
+  "margin-left": 160,
+  "margin-right": 160,
+  "margin-bottom": 0,
+
+  // La barra non riserva spazio esclusivo (permette finestre sotto)
+  "exclusive": true,
+
+  // Passthrough: la barra non blocca i click nelle zone trasparenti
+  "passthrough": false,
+
+  // Ordine moduli — sinistra | centro | destra
+  "modules-left": [
+    "hyprland/workspaces",
+    "hyprland/window"
+  ],
+
+  "modules-center": [
+    "clock"
+  ],
+
+  "modules-right": [
+    "pulseaudio",
+    "network",
+    "cpu",
+    "memory",
+    "temperature",
+    "battery"
+  ],
+
+  // ─── MODULI ────────────────────────────────────────
+
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "active": "•"
+    },
+    "persistent-workspaces": {
+      "*": 5
+    },
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "sort-by-number": true
+  },
+
+  "hyprland/window": {
+    "format": "{title}",
+    "max-length": 40,
+    "separate-outputs": true,
+  },
+
+  "clock": {
+    "format": "{:%H:%M}",
+    "format-alt": "{:%A, %d %B %Y}",
+    "tooltip-format": "<span font='JetbrainsMono'>{calendar}</span>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#cdd6f4'><b>{}</b></span>",
+        "days": "<span color='#cdd6f4'>{}</span>",
+        "weeks": "<span color='#6c7086'>{}</span>",
+        "weekdays": "<span color='#89b4fa'><b>{}</b></span>",
+        "today": "<span color='#f38ba8'><b>{}</b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
+  },
+
+  "pulseaudio": {
+    "format": "{icon}  {volume}%",
+    "format-muted": "󰝟  Muted",
+    "format-icons": {
+      "headphone": "󰋋",
+      "hands-free": "󱡏",
+      "headset": "󰋎",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["󰕿", "󰖀", "󰕾"]
+    },
+    "on-click": "pavucontrol",
+    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
+    "scroll-step": 2,
+    "tooltip-format": "{desc}"
+  },
+
+  "network": {
+    "format-wifi": "{essid}",
+    "format-ethernet": "󰈀  {ipaddr}",
+    "format-disconnected": "󰤭  Offline",
+    "format-alt": "{bandwidthUpBytes}  {bandwidthDownBytes}",
+    "tooltip-format-wifi": "{signalStrength}%  {frequency} MHz\n{ipaddr}",
+    "tooltip-format-ethernet": "󰈀  {ifname}\n{ipaddr}",
+    "on-click-right": "nm-connection-editor",
+    "interval": 5
+  },
+
+  "cpu": {
+    "format": "  {usage}%",
+    "tooltip-format": "CPU: {usage}%\nFreq: {avg_frequency} GHz",
+    "interval": 3,
+    "states": {
+      "warning": 70,
+      "critical": 90
+    }
+  },
+
+  "memory": {
+    "format": "  {percentage}%",
+    "tooltip-format": "RAM: {used:0.1f}G / {total:0.1f}G",
+    "interval": 5,
+    "states": {
+      "warning": 75,
+      "critical": 90
+    }
+  },
+
+  "temperature": {
+    "critical-threshold": 80,
+    "format": "{temperatureC}°C",
+    "tooltip": false
+  },
+
+  "battery": {
+    "states": {
+      "good": 80,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon}  {capacity}%",
+    "format-charging": "󰂄  {capacity}%",
+    "format-plugged": "󰚥  {capacity}%",
+    "format-alt": "{icon}  {time}",
+    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "tooltip-format": "{timeTo}\nCycles: {cycles}"
+  },
+}
