@@ -277,6 +277,9 @@ hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 -- toggle menu
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))
 
+-- toggle themeswithcer
+hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("bash ~/scripts/themeselector.sh"))
+
 --hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 
 -- Move focus with mainMod + vim keys
