@@ -32,7 +32,7 @@ git clone https://github.com/LazyVim/starter ~/.config/nvim
 rm -rf ~/.config/nvim/.git
 
 # move in the correct position the directory
-cp ~/HyprDots/script/ ~/
+cp -rf ~/HyprDots/scripts/ ~/
 
 # waybar
 sudo pacman -S waybar
