@@ -2,6 +2,10 @@
 
 echo "i will install various packages for the envirronment | WARNING : before execute the script be sure tath u copy the repository from the home"
 
+# hyprland setup
+mkdir ~/.config
+cd ~/HyprDots/.config && cp -r . ~/.config/
+
 # audio things
 sudo pacman -S pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber alsa-utils pavucontrol
 systemctl --user enable --now pipewire wireplumber pipewire-pulse
@@ -41,9 +45,5 @@ yay -S waybar-git
 sudo pacman -S zsh
 chsh -s $(which zsh)
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-# hyprland setup
-mkdir ~/.config
-cd ~/HyprDots/.config && cp -r . ~/.config/
 
 echo "To see the shell changes, you need to reboot"
