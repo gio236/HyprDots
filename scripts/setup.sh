@@ -35,8 +35,15 @@ rm -rf ~/.config/nvim/.git
 cp -rf ~/HyprDots/scripts/ ~/
 
 # waybar
-yay -S waybar-git 
+yay -S waybar-git
+
+# zsh shell + oh-my-zsh
+sudo pacman -S zsh
+chsh -s $(which zsh)
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # hyprland setup
 mkdir ~/.config
 cd ~/HyprDots/.config && cp -r . ~/.config/
+
+echo "To see the shell changes, you need to reboot"
