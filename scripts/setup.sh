@@ -35,7 +35,7 @@ rm -rf ~/.config/nvim/.git
 cp -rf ~/HyprDots/scripts/ ~/
 
 # waybar
-sudo pacman -S waybar
+yay -S waybar-git 
 
 # hyprland setup
 mkdir ~/.config
