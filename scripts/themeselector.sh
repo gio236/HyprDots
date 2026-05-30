@@ -51,6 +51,10 @@ fi
 # ── Apply theme files ─────────────────────────────────────────────────────────
 echo "Applying theme: $chosen"
 
+rm .config/theme/actwall/*
+cp .config/theme/$chosen/wallpaper/$chosen.* ~/.config/theme/actwall/
+bash ~/scripts/./wall.sh
+
 applied=0
 skipped=0
 
