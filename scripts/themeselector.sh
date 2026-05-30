@@ -13,6 +13,7 @@ declare -A FILE_MAP=(
   ["colors.ini"]="$HOME/.config/fuzzel/colors.ini"
   ["colors.toml"]="$HOME/.config/alacritty/colors.toml"
   ["color.css"]="$HOME/.config/waybar/color.css"
+  ["colors.lua"]="$HOME/.config/hypr/colors.lua"
 )
 
 # ── Check that fuzzel is installed ────────────────────────────────────────────
