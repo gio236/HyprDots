@@ -11,7 +11,7 @@ sudo pacman -S pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber a
 systemctl --user enable --now pipewire wireplumber pipewire-pulse
 
 # base things for the hyprland envirronment
-sudo pacman -S hyprland fuzzel alacritty firefox dolphin
+sudo pacman -S hyprland fuzzel alacritty firefox dolphin hyprpaper
 
 # yay
 if command -v yay >/dev/null 2>&1; then
