@@ -87,10 +87,10 @@ echo "$applied file(s) applied, $skipped error(s)."
 # ── Reload services (waybar, etc.) ────────────────────────────────────────────
 # Uncomment the lines below to automatically reload tools after switching.
 
-# Reload waybar
-# if pgrep -x waybar &>/dev/null; then
-#     pkill -SIGUSR2 waybar && echo "  ↺  waybar reloaded"
-# fi
+Reload waybar
+if pgrep -x waybar &>/dev/null; then
+  pkill -SIGUSR2 waybar && echo "  ↺  waybar reloaded"
+fi
 
 # Reload other applications if needed
 # killall -SIGUSR1 dunst 2>/dev/null
